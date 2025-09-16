@@ -1,7 +1,7 @@
 # Cloud Computing ITCS-6190 Project
 **Team 8**
 
-Deepashree Srinivasa
+Srinivasa Deepashree
 
 Vasudha Maganti
 
