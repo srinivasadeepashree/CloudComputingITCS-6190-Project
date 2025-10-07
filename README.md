@@ -21,7 +21,7 @@ shopping-trends-analysis/
 ├── tests/
 ├── docs/
 ├── output/
-│   └── figures                         # EDA plots
+│   └── figures/                        # EDA plots
 ├── requirements.txt                    # Python dependencies
 ├── run.sh                              # Main execution script
 └── README.md                           # This file
@@ -42,10 +42,6 @@ shopping-trends-analysis/
 - ✅ Customer Demographics Analysis
 - ✅ Purchase Distribution by Category
 - ✅ Revenue Analysis
-- ✅ Purchase behavior patterns
-- ✅ Payment and shipping preferences
-- ✅ Customer loyalty metrics
-- ✅ Seasonal trend analysis
 
 #### 3. Key Findings from EDA
 
@@ -63,13 +59,13 @@ shopping-trends-analysis/
 **Purchase Patterns**:
 - Categories: Clothing, Accessories, Footwear, Outerwear
 - Seasonal Trends: Winter, Spring, Summer, Fall
-- Average Purchase Amount: [To be computed]
+  
 
-**Business Insights**:
-- Payment Method Preferences
-- Subscription Impact on Revenue
-- Discount and Promo Code Effectiveness
-- Customer Loyalty Segmentation
+**Revenue Metrics**:
+- total revenue obtained
+- average transactions made
+- Able to figure out the no.of unique customers
+- Customer Demographic Analysis
 
 ### Installation
 
