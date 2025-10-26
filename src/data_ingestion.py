@@ -51,19 +51,18 @@ def define_schema():
         StructField("Gender", StringType(), True),
         StructField("Item Purchased", StringType(), True),
         StructField("Category", StringType(), True),
-        StructField("Purchase Amount (USD)", FloatType(), True),
+        StructField("Purchase Amount (USD)", IntegerType(), True),  # Changed to Integer!
         StructField("Location", StringType(), True),
         StructField("Size", StringType(), True),
         StructField("Color", StringType(), True),
         StructField("Season", StringType(), True),
         StructField("Review Rating", FloatType(), True),
         StructField("Subscription Status", StringType(), True),
-        StructField("Payment Method", StringType(), True),
-        StructField("Shipping Type", StringType(), True),
+        StructField("Shipping Type", StringType(), True),  # Moved up
         StructField("Discount Applied", StringType(), True),
         StructField("Promo Code Used", StringType(), True),
         StructField("Previous Purchases", IntegerType(), True),
-        StructField("Preferred Payment Method", StringType(), True),
+        StructField("Payment Method", StringType(), True),  # Fixed name!
         StructField("Frequency of Purchases", StringType(), True)
     ])
     return schema

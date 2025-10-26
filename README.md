@@ -7,6 +7,7 @@ This project implements a complete big data analytics pipeline using Apache Spar
 
 ## Project Structure
 
+
 ```
 shopping-trends-analysis/
 ├── data/
@@ -15,7 +16,8 @@ shopping-trends-analysis/
 │   └── processed/                      # Processed data (Parquet)
 ├── src/
 │   ├── data_ingestion.py               # Data loading and validation
-│   └──  eda_analysis.py                # Exploratory Data Analysis                 
+│   └──  eda_analysis.py                # Exploratory Data Analysis 
+|            
 ├── notebooks/
 │   └── 01_data_exploration.ipynb       # Interactive EDA
 ├── tests/
