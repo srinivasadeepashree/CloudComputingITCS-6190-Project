@@ -1,0 +1,6 @@
+Random Forest Classification Results
+==================================================
+Accuracy:  0.4260
+Precision: 0.2880
+Recall:    0.4260
+F1-Score:  0.3220
