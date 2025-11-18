@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1763435838020,"sparkVersion":"4.0.1","uid":"StringIndexer_7c50fdb7d275","paramMap":{"handleInvalid":"keep","outputCol":"age_group_indexed","inputCol":"age_group"},"defaultParamMap":{"handleInvalid":"error","outputCol":"StringIndexer_7c50fdb7d275__output","stringOrderType":"frequencyDesc"}}
