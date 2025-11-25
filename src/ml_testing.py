@@ -6,7 +6,7 @@ Tests trained ML models and makes predictions on new data
 """
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, when, expr, udf, round as spark_round
+from pyspark.sql.functions import col, when, expr, udf, round as spark_round, avg
 from pyspark.ml import PipelineModel
 from pyspark.sql.types import StringType, FloatType
 from pyspark.ml.functions import vector_to_array
@@ -64,7 +64,7 @@ class MLModelTester:
         print("")
         return models
     
-    def load_test_data(self, filepath="data/shopping_trends_updated.csv"):
+    def load_test_data(self, filepath="data/shopping.csv"):
         """
         Load test data (can be same or new data)
         
@@ -527,7 +527,7 @@ def main():
         return
     
     # Load test data
-    test_df = tester.load_test_data("data/shopping_trends.csv")
+    test_df = tester.load_test_data("data/shopping.csv")
     
     input("\nPress Enter to test Model 1 (Dynamic Pricing)...")
     

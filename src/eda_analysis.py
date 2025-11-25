@@ -33,8 +33,8 @@ class ShoppingTrendsEDA:
         """
         self.spark = spark
         self.df = df
-        self.df.createOrReplaceTempView("shopping_trends")
-        print("✓ Temporary view 'shopping_trends' created for Spark SQL queries")
+        self.df.createOrReplaceTempView("shopping")
+        print("✓ Temporary view 'shopping' created for Spark SQL queries")
     
     def overview_statistics(self):
         """
@@ -71,7 +71,7 @@ class ShoppingTrendsEDA:
                 MIN(Age) as min_age,
                 MAX(Age) as max_age,
                 ROUND(STDDEV(Age), 2) as stddev_age
-            FROM shopping_trends
+            FROM shopping
         """)
         age_stats.show()
         
@@ -87,8 +87,8 @@ class ShoppingTrendsEDA:
                     WHEN Age >= 55 THEN '55+'
                 END as age_group,
                 COUNT(*) as customer_count,
-                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping_trends), 2) as percentage
-            FROM shopping_trends
+                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping), 2) as percentage
+            FROM shopping
             GROUP BY age_group
             ORDER BY age_group
         """)
@@ -100,8 +100,8 @@ class ShoppingTrendsEDA:
             SELECT 
                 Gender,
                 COUNT(*) as count,
-                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping_trends), 2) as percentage
-            FROM shopping_trends
+                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping), 2) as percentage
+            FROM shopping
             GROUP BY Gender
             ORDER BY count DESC
         """)
@@ -113,7 +113,7 @@ class ShoppingTrendsEDA:
             SELECT 
                 Location,
                 COUNT(*) as customer_count
-            FROM shopping_trends
+            FROM shopping
             GROUP BY Location
             ORDER BY customer_count DESC
             LIMIT 10
@@ -144,7 +144,7 @@ class ShoppingTrendsEDA:
                 ROUND(MAX(`Purchase Amount (USD)`), 2) as max_purchase,
                 ROUND(STDDEV(`Purchase Amount (USD)`), 2) as stddev_purchase,
                 ROUND(SUM(`Purchase Amount (USD)`), 2) as total_revenue
-            FROM shopping_trends
+            FROM shopping
         """)
         purchase_stats.show()
         
@@ -156,7 +156,7 @@ class ShoppingTrendsEDA:
                 COUNT(*) as purchase_count,
                 ROUND(AVG(`Purchase Amount (USD)`), 2) as avg_amount,
                 ROUND(SUM(`Purchase Amount (USD)`), 2) as total_revenue
-            FROM shopping_trends
+            FROM shopping
             GROUP BY Category
             ORDER BY total_revenue DESC
         """)
@@ -170,7 +170,7 @@ class ShoppingTrendsEDA:
                 Category,
                 COUNT(*) as purchase_count,
                 ROUND(AVG(`Purchase Amount (USD)`), 2) as avg_price
-            FROM shopping_trends
+            FROM shopping
             GROUP BY `Item Purchased`, Category
             ORDER BY purchase_count DESC
             LIMIT 15
@@ -184,7 +184,7 @@ class ShoppingTrendsEDA:
                 `Frequency of Purchases`,
                 COUNT(*) as customer_count,
                 ROUND(AVG(`Purchase Amount (USD)`), 2) as avg_purchase_amount
-            FROM shopping_trends
+            FROM shopping
             GROUP BY `Frequency of Purchases`
             ORDER BY customer_count DESC
         """)
@@ -212,8 +212,8 @@ class ShoppingTrendsEDA:
                 `Payment Method`,
                 COUNT(*) as transaction_count,
                 ROUND(AVG(`Purchase Amount (USD)`), 2) as avg_amount,
-                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping_trends), 2) as percentage
-            FROM shopping_trends
+                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping), 2) as percentage
+            FROM shopping
             GROUP BY `Payment Method`
             ORDER BY transaction_count DESC
         """)
@@ -225,8 +225,8 @@ class ShoppingTrendsEDA:
             SELECT 
                 `Shipping Type`,
                 COUNT(*) as order_count,
-                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping_trends), 2) as percentage
-            FROM shopping_trends
+                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping), 2) as percentage
+            FROM shopping
             GROUP BY `Shipping Type`
             ORDER BY order_count DESC
         """)
@@ -240,7 +240,7 @@ class ShoppingTrendsEDA:
                 `Promo Code Used`,
                 COUNT(*) as count,
                 ROUND(AVG(`Purchase Amount (USD)`), 2) as avg_purchase
-            FROM shopping_trends
+            FROM shopping
             GROUP BY `Discount Applied`, `Promo Code Used`
             ORDER BY count DESC
         """)
@@ -268,7 +268,7 @@ class ShoppingTrendsEDA:
                 COUNT(*) as customer_count,
                 ROUND(AVG(`Purchase Amount (USD)`), 2) as avg_purchase,
                 ROUND(AVG(`Previous Purchases`), 2) as avg_previous_purchases
-            FROM shopping_trends
+            FROM shopping
             GROUP BY `Subscription Status`
             ORDER BY customer_count DESC
         """)
@@ -286,7 +286,7 @@ class ShoppingTrendsEDA:
                 END as customer_segment,
                 COUNT(*) as customer_count,
                 ROUND(AVG(`Purchase Amount (USD)`), 2) as avg_purchase
-            FROM shopping_trends
+            FROM shopping
             GROUP BY customer_segment
             ORDER BY 
                 CASE customer_segment
@@ -304,8 +304,8 @@ class ShoppingTrendsEDA:
             SELECT 
                 `Review Rating`,
                 COUNT(*) as count,
-                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping_trends), 2) as percentage
-            FROM shopping_trends
+                ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM shopping), 2) as percentage
+            FROM shopping
             GROUP BY `Review Rating`
             ORDER BY `Review Rating` DESC
         """)
@@ -333,7 +333,7 @@ class ShoppingTrendsEDA:
                 COUNT(*) as purchase_count,
                 ROUND(AVG(`Purchase Amount (USD)`), 2) as avg_purchase,
                 ROUND(SUM(`Purchase Amount (USD)`), 2) as total_revenue
-            FROM shopping_trends
+            FROM shopping
             GROUP BY Season
             ORDER BY total_revenue DESC
         """)
@@ -346,7 +346,7 @@ class ShoppingTrendsEDA:
                 Season,
                 Category,
                 COUNT(*) as purchase_count
-            FROM shopping_trends
+            FROM shopping
             GROUP BY Season, Category
             ORDER BY Season, purchase_count DESC
         """)
@@ -424,7 +424,7 @@ class ShoppingTrendsEDA:
                 ROUND(AVG(`Review Rating`), 2) as avg_rating,
                 COUNT(DISTINCT Category) as total_categories,
                 COUNT(DISTINCT `Item Purchased`) as total_unique_items
-            FROM shopping_trends
+            FROM shopping
         """)
         
         print("\nKey Business Metrics:")
@@ -464,11 +464,11 @@ def main():
     # Load data (assumes data_ingestion has been run)
     try:
         # Load from parquet (processed data)
-        df = spark.read.parquet("data/processed/shopping_trends_clean")
+        df = spark.read.parquet("data/processed/shopping_clean")
         print("✓ Loaded processed data from parquet")
     except:
         # Fallback to CSV
-        df = spark.read.csv("data/shopping_trends.csv", header=True, inferSchema=True)
+        df = spark.read.csv("data/shopping.csv", header=True, inferSchema=True)
         print("✓ Loaded data from CSV")
     
     # Initialize EDA class

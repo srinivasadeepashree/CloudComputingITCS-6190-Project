@@ -57,7 +57,7 @@ class MLModelTrainer:
         print(f"  Model Directory: ./models/")
         print("="*80 + "\n")
     
-    def load_data(self, filepath="data/shopping_trends_updated.csv"):
+    def load_data(self, filepath="data/shopping.csv"):
         """
         Load and validate dataset
         
@@ -285,7 +285,7 @@ class MLModelTrainer:
             maxIter=50,
             maxDepth=5,
             stepSize=0.1,
-            seed=42
+            seed=8
         )
         
         # Create pipeline
@@ -301,7 +301,7 @@ class MLModelTrainer:
         
         # Split data
         print("📊 Splitting data...")
-        train_df, test_df = df.randomSplit([0.8, 0.2], seed=42)
+        train_df, test_df = df.randomSplit([0.7, 0.3], seed=8)
         
         train_count = train_df.count()
         test_count = test_df.count()
@@ -433,13 +433,11 @@ class MLModelTrainer:
         
         # Define feature columns
         categorical_cols = [
-            'Gender', 'Season', 'Location',
-            'Subscription Status', 'Frequency of Purchases',
-            'customer_tier', 'age_group', 'Payment Method'
+            'Gender', 'Season', 'Location'
         ]
         
         numerical_cols = [
-            'Age', 'Purchase Amount (USD)', 'Previous Purchases',
+            'Age', 'Purchase Amount (USD)',
             'Review Rating', 'is_frequent_buyer'
         ]
         
@@ -482,7 +480,7 @@ class MLModelTrainer:
             labelCol="label",
             numTrees=100,
             maxDepth=10,
-            seed=42
+            # seed=8
         )
         
         # Create pipeline
@@ -498,7 +496,7 @@ class MLModelTrainer:
         
         # Split data
         print("📊 Splitting data...")
-        train_df, test_df = df.randomSplit([0.8, 0.2], seed=42)
+        train_df, test_df = df.randomSplit([0.70, 0.30])
         
         train_count = train_df.count()
         test_count = test_df.count()
@@ -661,7 +659,7 @@ def main():
     trainer = MLModelTrainer()
     
     # Load data
-    df = trainer.load_data("data/shopping_trends.csv")
+    df = trainer.load_data("data/shopping.csv")
     
     input("\n Press Enter to train Model 1 (Dynamic Pricing)...")
     

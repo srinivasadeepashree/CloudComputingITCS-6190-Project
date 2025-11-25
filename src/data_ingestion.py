@@ -9,7 +9,12 @@ using Apache Spark Structured APIs.
 
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, count, countDistinct, isnan, when
-from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType, DoubleType
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.stat import Correlation
+
+
+import numpy as np
 import os
 import sys
 
@@ -51,18 +56,19 @@ def define_schema():
         StructField("Gender", StringType(), True),
         StructField("Item Purchased", StringType(), True),
         StructField("Category", StringType(), True),
-        StructField("Purchase Amount (USD)", IntegerType(), True),  # Changed to Integer!
+        StructField("Purchase Amount (USD)", FloatType(), True),
         StructField("Location", StringType(), True),
         StructField("Size", StringType(), True),
         StructField("Color", StringType(), True),
         StructField("Season", StringType(), True),
         StructField("Review Rating", FloatType(), True),
         StructField("Subscription Status", StringType(), True),
-        StructField("Shipping Type", StringType(), True),  # Moved up
+        StructField("Payment Method", StringType(), True),
+        StructField("Shipping Type", StringType(), True),
         StructField("Discount Applied", StringType(), True),
         StructField("Promo Code Used", StringType(), True),
         StructField("Previous Purchases", IntegerType(), True),
-        StructField("Payment Method", StringType(), True),  # Fixed name!
+        StructField("Preferred Payment Method", StringType(), True),
         StructField("Frequency of Purchases", StringType(), True)
     ])
     return schema
@@ -192,6 +198,62 @@ def get_basic_statistics(df):
     
     return stats_df
 
+ #------------------------------------------------------------------------------
+# 4️⃣ COMPUTE CORRELATION MATRIX + REMOVE REDUNDANT COLUMNS
+# ------------------------------------------------------------------------------
+def reduce_features_by_correlation(df, threshold=0.85):
+    print("\n🔍 Detecting numeric columns...")
+
+    numeric_cols = [
+        field.name for field in df.schema.fields
+        if isinstance(field.dataType, (IntegerType, FloatType, DoubleType))
+    ]
+
+    print(f"Numeric Columns Found: {numeric_cols}")
+
+    if len(numeric_cols) < 2:
+        print("⚠ Not enough numeric columns for correlation analysis.")
+        return df
+
+    print("\n📊 Building feature vector for correlation...")
+    assembler = VectorAssembler(
+        inputCols=numeric_cols,
+        outputCol="features"
+    )
+    vector_df = assembler.transform(df).select("features")
+
+    print("📈 Computing correlation matrix...")
+    corr_matrix = Correlation.corr(vector_df, "features").head()[0].toArray()
+    print("\nCorrelation Matrix:")
+    print(np.round(corr_matrix, 3))
+
+    print("\n🔎 Identifying highly correlated pairs...")
+    high_corr_pairs = []
+    for i in range(len(corr_matrix)):
+        for j in range(i + 1, len(corr_matrix)):
+            if abs(corr_matrix[i][j]) > threshold:
+                high_corr_pairs.append(
+                    (numeric_cols[i], numeric_cols[j], corr_matrix[i][j])
+                )
+
+    if not high_corr_pairs:
+        print("✔ No highly correlated columns found!")
+        return df
+
+    print("\n⚠ Highly correlated column pairs detected:")
+    for col1, col2, corr_value in high_corr_pairs:
+        print(f"  - ({col1}) <--> ({col2}) | Corr = {corr_value:.3f}")
+
+    print("\n🗑 Removing redundant columns...")
+    columns_to_drop = list({pair[1] for pair in high_corr_pairs})
+    print(f"Columns Dropped: {columns_to_drop}")
+
+    df_cleaned = df.drop(*columns_to_drop)
+    print(f"✔ Feature Reduction Complete | Remaining Columns: {df_cleaned.columns}")
+
+    return df_cleaned
+
+
 
 def save_processed_data(df, output_path, format="parquet"):
     """
@@ -221,8 +283,8 @@ def main():
     Main execution function for data ingestion
     """
     # Configuration
-    DATA_PATH = "data/shopping_trends.csv"
-    OUTPUT_PATH = "data/processed/shopping_trends_clean"
+    DATA_PATH = "data/shopping.csv"
+    OUTPUT_PATH = "data/processed/shopping_clean"
     
     try:
         # Create Spark session
@@ -239,6 +301,12 @@ def main():
         
         # Display sample data
         display_sample_data(df, n=10)
+
+        print("\n📈 Starting Feature Correlation Reduction...")
+        df_cleaned = reduce_features_by_correlation(df)
+
+        print("\n💾 Saving cleaned DataFrame for ML Training...")
+        save_processed_data(df_cleaned, OUTPUT_PATH, format="parquet")
         
         # Validate data
         validation_results = validate_data(df)

@@ -739,10 +739,17 @@ def main():
     
     spark.sparkContext.setLogLevel("WARN")
     
-    # Load data
-    print("\n📂 Loading dataset...")
-    df = spark.read.csv("data/shopping_trends.csv", header=True, inferSchema=True)
-    print(f"✓ Loaded {df.count():,} records\n")
+    try:
+        # Load from parquet (processed data)
+        df = spark.read.parquet("data/processed/shopping_clean")
+        print("✓ Loaded processed data from parquet")
+        print(f"✓ Loaded {df.count():,} records\n")
+
+    except:
+        # Fallback to CSV
+        df = spark.read.csv("data/shopping.csv", header=True, inferSchema=True)
+        print("✓ Loaded data from CSV")
+        print(f"✓ Loaded {df.count():,} records\n")
     
     # Create analyzer
     analyzer = ShoppingTrendsAnalyzer(spark, df)

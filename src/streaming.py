@@ -76,7 +76,7 @@ def main():
     ╚════════════════════════════════════════════════════════════════╝
     """)
     
-    simulator = TransactionSimulator('data/shopping_trends.csv')
+    simulator = TransactionSimulator('data/shopping.csv')
     
     print("\nConfiguration:")
     print("  1. Quick Demo (10 batches, 30 trans each, 2s delay) - 20 seconds")

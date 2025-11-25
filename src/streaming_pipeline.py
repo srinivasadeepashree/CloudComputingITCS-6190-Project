@@ -10,7 +10,7 @@ Features:
 - Data quality monitoring
 - Anomaly detection
 
-Matches schema: shopping_trends_updated.csv (18 columns + timestamp)
+Matches schema: shopping.csv (18 columns + timestamp)
 """
 
 from pyspark.sql import SparkSession
@@ -30,7 +30,7 @@ import os
 class ShoppingStreamProcessor:
     """
     Real-time shopping transaction processor with watermark support
-    Designed for shopping_trends_updated.csv schema
+    Designed for shopping.csv schema
     """
     
     def __init__(self):

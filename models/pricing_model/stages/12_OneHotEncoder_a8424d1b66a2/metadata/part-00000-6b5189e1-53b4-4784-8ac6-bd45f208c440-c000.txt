@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.OneHotEncoderModel","timestamp":1764029857902,"sparkVersion":"4.0.1","uid":"OneHotEncoder_a8424d1b66a2","paramMap":{"inputCol":"Frequency of Purchases_indexed","outputCol":"Frequency of Purchases_encoded"},"defaultParamMap":{"dropLast":true,"outputCol":"OneHotEncoder_a8424d1b66a2__output","handleInvalid":"error"}}

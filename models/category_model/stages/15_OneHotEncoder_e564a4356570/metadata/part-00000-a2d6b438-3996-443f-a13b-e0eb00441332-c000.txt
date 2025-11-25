@@ -1,1 +1,0 @@
-{"class":"org.apache.spark.ml.feature.OneHotEncoderModel","timestamp":1763435840123,"sparkVersion":"4.0.1","uid":"OneHotEncoder_e564a4356570","paramMap":{"outputCol":"age_group_encoded","inputCol":"age_group_indexed"},"defaultParamMap":{"outputCol":"OneHotEncoder_e564a4356570__output","handleInvalid":"error","dropLast":true}}
