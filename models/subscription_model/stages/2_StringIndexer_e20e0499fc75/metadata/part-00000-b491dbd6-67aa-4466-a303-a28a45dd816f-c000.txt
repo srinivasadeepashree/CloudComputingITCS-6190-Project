@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1764289530466,"sparkVersion":"4.0.1","uid":"StringIndexer_e20e0499fc75","paramMap":{"inputCol":"Frequency of Purchases","outputCol":"Frequency of Purchases_idx","handleInvalid":"keep"},"defaultParamMap":{"stringOrderType":"frequencyDesc","outputCol":"StringIndexer_e20e0499fc75__output","handleInvalid":"error"}}
