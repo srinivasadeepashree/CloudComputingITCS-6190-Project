@@ -464,7 +464,7 @@ def main():
     # Load data (assumes data_ingestion has been run)
     try:
         # Load from parquet (processed data)
-        df = spark.read.parquet("data/processed/shopping_clean")
+        df = spark.read.parquet("data/processed/shopping")
         print("✓ Loaded processed data from parquet")
     except:
         # Fallback to CSV

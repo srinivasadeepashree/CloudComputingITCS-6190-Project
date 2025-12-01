@@ -284,7 +284,7 @@ def main():
     """
     # Configuration
     DATA_PATH = "data/shopping.csv"
-    OUTPUT_PATH = "data/processed/shopping_clean"
+    OUTPUT_PATH = "data/processed/shopping"
     
     try:
         # Create Spark session

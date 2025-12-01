@@ -725,8 +725,8 @@ def main():
     """
     print("""
     ╔════════════════════════════════════════════════════════════════╗
-    ║      Shopping Trends - 9 Advanced Analytical Queries          ║
-    ║      ITCS 6190 Big Data Analytics Project                    ║
+    ║      Shopping Trends - 9 Advanced Analytical Queries           ║
+    ║      ITCS 6190 Big Data Analytics Project                      ║
     ╚════════════════════════════════════════════════════════════════╝
     """)
     
@@ -741,7 +741,7 @@ def main():
     
     try:
         # Load from parquet (processed data)
-        df = spark.read.parquet("data/processed/shopping_clean")
+        df = spark.read.parquet("data/processed/shopping")
         print("✓ Loaded processed data from parquet")
         print(f"✓ Loaded {df.count():,} records\n")
 

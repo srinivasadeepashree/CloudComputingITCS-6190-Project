@@ -1,14 +1,16 @@
 """
-Machine Learning Model: Promo Code Propensity Predictor (With Evaluation)
+Machine Learning Model: Promo Code Propensity Predictor (With Evaluation & Save)
 ITCS 6190 - Big Data Analytics Project
 """
 
+import os
+import shutil
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import lit
 from pyspark.ml.feature import VectorAssembler, StringIndexer, OneHotEncoder
 from pyspark.ml.classification import RandomForestClassifier
 from pyspark.ml.evaluation import BinaryClassificationEvaluator, MulticlassClassificationEvaluator
-from pyspark.ml import Pipeline
+from pyspark.ml import Pipeline, PipelineModel
 
 class PromoModelApp:
     def __init__(self):
@@ -18,13 +20,17 @@ class PromoModelApp:
             .getOrCreate()
         self.spark.sparkContext.setLogLevel("ERROR")
         print("✓ Spark Session Initialized")
+        self.pipeline_model = None
 
     def train(self, filepath="data/shopping.csv"):
         print("🚀 Loading Data...")
-        df = self.spark.read.csv(filepath, header=True, inferSchema=True)
-        
+        try:
+            df = self.spark.read.csv(filepath, header=True, inferSchema=True)
+        except Exception as e:
+            print(f"Error loading file: {e}")
+            return
+
         # 1. SPLIT DATA (80% Train, 20% Test)
-        # We assume the data is shuffled randomly
         train_df, test_df = df.randomSplit([0.8, 0.2], seed=42)
         
         print(f"📊 Training Set: {train_df.count()} rows")
@@ -65,11 +71,9 @@ class PromoModelApp:
         predictions = self.pipeline_model.transform(test_df)
         
         # Calculate Metrics
-        # AUC (Area Under ROC) - Good for binary classification
         binary_eval = BinaryClassificationEvaluator(labelCol="label")
         auc = binary_eval.evaluate(predictions)
         
-        # Accuracy, Precision, Recall, F1
         multi_eval = MulticlassClassificationEvaluator(labelCol="label", metricName="accuracy")
         accuracy = multi_eval.evaluate(predictions)
         
@@ -91,12 +95,35 @@ class PromoModelApp:
         print(f"  F1 Score:  {f1:.4f}")
         print(f"  AUC-ROC:   {auc:.4f}")
         print("="*40 + "\n")
-        
+
+    def save_model(self, path="model/promo_code_model"):
+        """Saves the trained pipeline model to disk."""
+        if self.pipeline_model is None:
+            print("❌ No model to save. Run train() first.")
+            return
+
+        print(f"💾 Saving model to '{path}'...")
+        try:
+            # Overwrite if exists to avoid errors on re-runs
+            self.pipeline_model.write().overwrite().save(path)
+            print("✓ Model saved successfully.")
+        except Exception as e:
+            print(f"❌ Error saving model: {e}")
+
+    def load_model(self, path="model/promo_code_model"):
+        """Loads a pre-trained pipeline model."""
+        print(f"📂 Loading model from '{path}'...")
+        try:
+            self.pipeline_model = PipelineModel.load(path)
+            print("✓ Model loaded successfully.")
+        except Exception as e:
+            print(f"❌ Error loading model: {e}")
+
     def predict_user_input(self):
-        # ... (Keep this function exactly the same as before) ...
-        # Import local to avoid scope issues
-        from pyspark.sql.functions import lit
-        
+        if self.pipeline_model is None:
+            print("❌ No model loaded. Train or load a model first.")
+            return
+
         print("\n" + "="*40)
         print("🔮 INTERACTIVE PREDICTION TOOL")
         print("="*40)
@@ -118,7 +145,8 @@ class PromoModelApp:
                        'Subscription Status', 'Frequency of Purchases', 'Previous Purchases']
             
             input_df = self.spark.createDataFrame(data, columns)
-            input_df = input_df.withColumn("Promo Code Used", lit("No")) # Dummy target
+            # Add dummy target col because Pipeline expects it for the Indexer stage
+            input_df = input_df.withColumn("Promo Code Used", lit("No")) 
             
             # 3. Predict
             prediction = self.pipeline_model.transform(input_df)
@@ -134,19 +162,24 @@ class PromoModelApp:
             print("\n" + "-"*40)
             print("📊 PREDICTION RESULT")
             print("-" * 40)
-            if pred_class == 1.0: # Assuming 1.0 = Yes
+            if pred_class == 1.0: 
                 print(f"✅ YES, likely to use Promo Code.")
             else:
                 print(f"❌ NO, unlikely to use Promo Code.")
             print(f"Confidence: {likelihood:.1f}%")
             
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Error during prediction: {e}")
 
 if __name__ == "__main__":
     app = PromoModelApp()
+    
+    # Train the model
     app.train()
     
-    # Optional loop for manual testing
-    # while True:
-    #     app.predict_user_input()
+    # Save the model
+    app.save_model("model/promo_code_model")
+    
+    # Example: How to load it back later
+    # app.load_model("model")
+    # app.predict_user_input()

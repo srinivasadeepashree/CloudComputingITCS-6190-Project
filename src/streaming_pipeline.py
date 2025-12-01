@@ -567,15 +567,15 @@ def main():
     """Main execution function"""
     print("""
     ╔════════════════════════════════════════════════════════════════╗
-    ║        Shopping Trends - Real-Time Streaming Pipeline         ║
-    ║        ITCS 6190 Big Data Analytics - Milestone 2            ║
+    ║        Shopping Trends - Real-Time Streaming Pipeline          ║
+    ║        ITCS 6190 Big Data Analytics - Milestone 2              ║
     ╚════════════════════════════════════════════════════════════════╝
     """)
     
     print("\n⚠️  IMPORTANT PREREQUISITES:")
     print("="*80)
     print("1. Run simulator first:")
-    print("   python3 src/streaming_simulator.py")
+    print("   python3 src/streaming.py")
     print("   (Choose option 2 - Standard configuration)")
     print("")
     print("2. Wait for batches to start appearing in data/streaming_input/")

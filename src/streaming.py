@@ -71,8 +71,8 @@ def main():
     """Run simulator"""
     print("""
     ╔════════════════════════════════════════════════════════════════╗
-    ║            Shopping Trends - Streaming Simulator              ║
-    ║            ITCS 6190 Big Data Analytics                       ║
+    ║            Shopping Trends - Streaming Simulator               ║
+    ║            ITCS 6190 Big Data Analytics                        ║
     ╚════════════════════════════════════════════════════════════════╝
     """)
     

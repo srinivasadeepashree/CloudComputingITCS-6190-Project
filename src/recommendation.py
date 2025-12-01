@@ -1,5 +1,5 @@
 """
-Machine Learning Pipeline: Product Recommendation Engine (Corrected)
+Machine Learning Pipeline: Product Recommendation Engine (Corrected & With Save)
 ITCS 6190 - Big Data Analytics Project
 
 Model 4: Collaborative Filtering Recommender (ALS)
@@ -9,7 +9,7 @@ Goal: Recommend products users have NOT bought yet but are likely to like.
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, explode, row_number
 from pyspark.sql.window import Window
-from pyspark.ml.recommendation import ALS
+from pyspark.ml.recommendation import ALS, ALSModel
 from pyspark.ml.feature import StringIndexer
 from pyspark.ml.evaluation import RegressionEvaluator
 import os
@@ -22,7 +22,8 @@ class RecommendationEngine:
             .config("spark.driver.memory", "4g") \
             .getOrCreate()
         self.spark.sparkContext.setLogLevel("ERROR")
-        os.makedirs("models", exist_ok=True)
+        # Ensure the directory exists
+        os.makedirs("model", exist_ok=True)
         print("✓ Spark Session Initialized")
 
     def load_data(self, filepath="/workspaces/CloudComputingITCS-6190-Project/data/shopping.csv"):
@@ -78,11 +79,31 @@ class RecommendationEngine:
         print(f"📊 Model Performance (RMSE): {rmse:.4f}")
         return model
 
+    def save_model(self, model, path="model/als_recommender"):
+        """Saves the trained ALS model to disk."""
+        print(f"\n💾 Saving model to '{path}'...")
+        try:
+            # Overwrite ensures we don't crash if the folder exists
+            model.write().overwrite().save(path)
+            print("✓ Model saved successfully.")
+        except Exception as e:
+            print(f"❌ Error saving model: {e}")
+
+    def load_model(self, path="model/als_recommender"):
+        """Loads a pre-trained ALS model."""
+        print(f"\n📂 Loading model from '{path}'...")
+        try:
+            model = ALSModel.load(path)
+            print("✓ Model loaded successfully.")
+            return model
+        except Exception as e:
+            print(f"❌ Error loading model: {e}")
+            return None
+
     def generate_recommendations(self, model, df_history, item_labels):
         print("\n🔮 Generating recommendations (Filtering out purchased items)...")
         
         # 1. Get predictions for ALL items for every user
-        # We ask for 25 items (max items in dataset) to ensure we have enough after filtering
         raw_recs = model.recommendForAllUsers(25)
         
         # 2. Explode the array into individual rows [userId, itemId, rating]
@@ -96,11 +117,9 @@ class RecommendationEngine:
         )
         
         # 3. IDENTIFY HISTORY: Select just User and Item from original data
-        # "These are the items the user has ALREADY bought"
         user_history = df_history.select("userId", "itemId").distinct()
         
         # 4. ANTI-JOIN: Subtract History from Recommendations
-        # "Keep recommendations where (userId, itemId) does NOT exist in history"
         new_recs = recs_exploded.join(
             user_history, 
             on=["userId", "itemId"], 
@@ -115,7 +134,6 @@ class RecommendationEngine:
             .drop("rank")
         
         # 6. Convert Integer Item IDs back to String Names
-        # Create a mapping DataFrame
         item_mapping = [(i, label) for i, label in enumerate(item_labels)]
         mapping_df = self.spark.createDataFrame(item_mapping, ["id", "name"])
         
@@ -127,10 +145,10 @@ class RecommendationEngine:
         print("\n📋 Sample NEW Product Recommendations:")
         readable_recs.show(10, truncate=False)
         
-        # Save
-        save_path = "output/customer_recommendations_filtered"
+        # Save Output
+        save_path = "model/customer_recommendations_filtered"
         readable_recs.write.mode("overwrite").csv(save_path, header=True)
-        print(f"💾 Saved to: {save_path}")
+        print(f"💾 Saved recommendations to: {save_path}")
         
         return readable_recs
 
@@ -139,9 +157,16 @@ class RecommendationEngine:
         # We need the indexed dataframe (df_indexed) for the history filter later
         df_indexed, item_labels = self.prepare_data(df)
         
+        # Train
         model = self.train_recommender(df_indexed)
         
-        # Pass df_indexed as 'df_history' to perform the filter
+        # Save Model
+        self.save_model(model)
+        
+        # Example of loading (optional usage check)
+        # loaded_model = self.load_model()
+        
+        # Generate Recommendations
         self.generate_recommendations(model, df_indexed, item_labels)
         
         self.spark.stop()

@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1764626634123,"sparkVersion":"4.0.1","uid":"StringIndexer_425a59a2ee2b","paramMap":{"outputCol":"Subscription Status_idx","handleInvalid":"keep","inputCol":"Subscription Status"},"defaultParamMap":{"outputCol":"StringIndexer_425a59a2ee2b__output","stringOrderType":"frequencyDesc","handleInvalid":"error"}}
