@@ -1,6 +1,6 @@
 """
-Machine Learning Model: Promo Code Propensity Predictor (With Evaluation & Save)
-ITCS 6190 - Big Data Analytics Project
+Machine Learning Model: Promo Code Predictor (With Evaluation & Save)
+ITCS 6190 - Cloud Computing for Data Analysis Project
 """
 
 import os

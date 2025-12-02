@@ -5,18 +5,25 @@ set -e
 
 echo "🚀 Starting the Pipeline..."
 
-# # 2. Run your files in order
-# echo "--- Step 1: Running Data Preparation ---"
-# python3 data_ingestion.py
+# 2. Run your files in order
+echo "--- Step 1: Running Data Preparation ---"
+python3 src/data_ingestion.py
 
-# echo 
-# echo "--- Step 2: Training the Model ---"
-# python3 train_model.py
+echo "--- Step 2: Running EDA Analysis ---"
+python3 src/eda_analysis.py
 
-# echo "--- Step 3: Generating Recommendations ---"
-# python3 recommend.py
+echo "--- Step 3: Complex Queries ---"
+python3 src/complex_queries.py
 
-echo "--- Step : App ---"
+echo "--- Step 4: Streaming Data ---"
+python3 src/streaming.py
+python3 src/streaming_pipeline.py
+
+echo "--- Step 5: Training the Models and Saving them ---"
+python3 src/promo_code_model.py
+python3 src/season_model.py
+
+echo "--- Step 6: App ---"
 python3 src/app.py
 
 echo "✅ Pipeline finished successfully!"

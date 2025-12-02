@@ -1,6 +1,6 @@
 """
-Complex Spark SQL Queries for Shopping Trends Analysis
-ITCS 6190 - Big Data Analytics Project
+Complex Spark SQL Queries - ShopSense
+ITCS 6190 - Cloud Computing for Data Analysis Project
 
 Demonstrates 9 advanced analytical queries covering:
 - Customer segmentation and behavior
@@ -830,7 +830,7 @@ def main():
     print("Ready for demo and presentation! 🎉")
     print("="*80 + "\n")
     
-    spark.stop()
+    # spark.stop()
 
 
 if __name__ == "__main__":

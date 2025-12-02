@@ -1,6 +1,6 @@
 """
-Exploratory Data Analysis Module for Shopping Trends
-ITCS 6190 - Big Data Analytics Project
+Exploratory Data Analysis Module for ShopSense
+ITCS 6190 - Cloud Computing for Data Analysis Project
 
 This module performs comprehensive EDA using Spark SQL and DataFrame APIs
 """
@@ -500,6 +500,6 @@ def main():
 if __name__ == "__main__":
     spark, df, eda = main()
     
-    input("\nPress Enter to stop Spark session...")
-    spark.stop()
-    print("✓ Spark session stopped")
+    # input("\nPress Enter to stop Spark session...")
+    # spark.stop()
+    # print("✓ Spark session stopped")

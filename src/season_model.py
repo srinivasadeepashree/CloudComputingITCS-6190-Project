@@ -1,6 +1,6 @@
 """
 Machine Learning Pipeline: Seasonal Item Prediction (With Save/Load)
-ITCS 6190 - Big Data Analytics Project
+ITCS 6190 - Cloud Computing for Data Analysis Project
 
 Model 5: Seasonal Item Context Predictor
 Goal: Predict specific items a customer is most likely to buy in a specific season.
@@ -146,7 +146,7 @@ class SeasonalItemPredictor:
         # 5. Display Top 3 Most Likely Items
         print(f"   Most likely purchases:")
         for i, (item, prob) in enumerate(item_probs[:3]):
-            print(f"   {i+1}. {item:<15} (Confidence: {prob*100:.1f}%)")
+            print(f"   {i+1}. {item}")
 
     def run(self):
         df = self.load_data()
@@ -162,7 +162,7 @@ class SeasonalItemPredictor:
         # Predict for same Customer in Summer (Result should theoretically change)
         self.predict_for_customer(model, df, customer_id=1, target_season="Summer", item_labels=item_labels)
         
-        self.spark.stop()
+        # self.spark.stop()
 
 if __name__ == "__main__":
     predictor = SeasonalItemPredictor()

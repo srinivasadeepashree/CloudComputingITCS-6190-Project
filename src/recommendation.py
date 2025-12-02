@@ -1,6 +1,6 @@
 """
 Machine Learning Pipeline: Product Recommendation Engine (Corrected & With Save)
-ITCS 6190 - Big Data Analytics Project
+ITCS 6190 - Cloud Computing for Data Analysis Project
 
 Model 4: Collaborative Filtering Recommender (ALS)
 Goal: Recommend products users have NOT bought yet but are likely to like.
@@ -169,7 +169,7 @@ class RecommendationEngine:
         # Generate Recommendations
         self.generate_recommendations(model, df_indexed, item_labels)
         
-        self.spark.stop()
+        # self.spark.stop()
 
 if __name__ == "__main__":
     engine = RecommendationEngine()

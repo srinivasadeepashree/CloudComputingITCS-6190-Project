@@ -1,6 +1,6 @@
 """
-Complete Streaming Pipeline for Shopping Trends Analysis
-ITCS 6190 - Big Data Analytics Project
+Complete Streaming Pipeline for ShopSense
+ITCS 6190 - Cloud Computing for Data Analysis Project
 
 Features:
 - Real-time transaction processing
@@ -25,6 +25,7 @@ from pyspark.sql.types import (
 )
 import time
 import os
+import shutil
 
 
 class ShoppingStreamProcessor:
@@ -43,9 +44,15 @@ class ShoppingStreamProcessor:
             .getOrCreate()
         
         self.spark.sparkContext.setLogLevel("WARN")
-        
+
+        dir_path = "checkpoints"
         # Create checkpoint directory
-        os.makedirs("checkpoints", exist_ok=True)
+        if os.path.exists(dir_path):
+            shutil.rmtree(dir_path)
+            print(f"Deleted {dir_path}")
+        else:
+            print(f"{dir_path} does not exist")
+            os.makedirs("checkpoints", exist_ok=True)
         
         print("="*80)
         print("✓ Spark Streaming Session Initialized")

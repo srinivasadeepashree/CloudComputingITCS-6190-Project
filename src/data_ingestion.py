@@ -1,7 +1,7 @@
 # Data ingestion script placeholder
 """
-Data Ingestion Module for Shopping Trends Analysis
-ITCS 6190 - Big Data Analytics Project
+Data Ingestion Module for ShopSense
+ITCS 6190 - Cloud Computing for Data Analysis Project
 
 This module handles the initial data loading and basic validation
 using Apache Spark Structured APIs.
@@ -338,7 +338,7 @@ def main():
 if __name__ == "__main__":
     spark, df = main()
     
-    # Keep the session running for interactive exploration
-    input("\nPress Enter to stop Spark session...")
-    spark.stop()
-    print("✓ Spark session stopped")
+    # # Keep the session running for interactive exploration
+    # input("\nPress Enter to stop Spark session...")
+    # spark.stop()
+    # print("✓ Spark session stopped")
