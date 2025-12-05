@@ -1,1 +1,0 @@
-{"class":"org.apache.spark.ml.feature.OneHotEncoderModel","timestamp":1763921374100,"sparkVersion":"4.0.1","uid":"OneHotEncoder_780ef129aa76","paramMap":{"inputCol":"Season_indexed","outputCol":"Season_encoded"},"defaultParamMap":{"dropLast":true,"handleInvalid":"error","outputCol":"OneHotEncoder_780ef129aa76__output"}}

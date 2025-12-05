@@ -1,0 +1,51 @@
+Customer ID,Age,Gender,Item Purchased,Category,Purchase Amount (USD),Location,Size,Color,Season,Review Rating,Subscription Status,Shipping Type,Discount Applied,Promo Code Used,Previous Purchases,Payment Method,Frequency of Purchases,timestamp
+3198,27,Female,Blouse,Clothing,35,Maine,M,Magenta,Winter,4.2,No,Standard,No,No,40,PayPal,Every 3 Months,2025-12-02 16:50:09
+2936,58,Female,Sneakers,Footwear,27,North Carolina,XL,Gray,Spring,4.6,No,Standard,No,No,11,Venmo,Weekly,2025-12-02 16:50:09
+2776,37,Female,Socks,Clothing,25,Montana,L,Red,Fall,3.6,No,Free Shipping,No,No,16,Debit Card,Weekly,2025-12-02 16:50:09
+2061,21,Male,Blouse,Clothing,81,Wisconsin,L,Red,Summer,4.1,No,2-Day Shipping,Yes,No,41,PayPal,Quarterly,2025-12-02 16:50:09
+3669,59,Female,Sneakers,Footwear,86,Michigan,XL,Pink,Fall,3.0,No,Standard,No,Yes,6,Credit Card,Annually,2025-12-02 16:50:09
+2152,70,Male,Jeans,Clothing,58,Vermont,L,Brown,Fall,2.6,No,2-Day Shipping,No,No,18,Venmo,Monthly,2025-12-02 16:50:09
+3339,29,Female,Scarf,Accessories,32,Minnesota,S,Blue,Spring,4.3,No,2-Day Shipping,Yes,Yes,43,PayPal,Monthly,2025-12-02 16:50:09
+1393,31,Male,Handbag,Accessories,27,Arkansas,M,Black,Spring,3.0,No,Next Day Air,No,Yes,42,Bank Transfer,Every 3 Months,2025-12-02 16:50:09
+2114,63,Male,Dress,Clothing,40,Virginia,M,Brown,Spring,2.7,No,Store Pickup,No,No,29,PayPal,Every 3 Months,2025-12-02 16:50:09
+2607,68,Male,Gloves,Accessories,41,Nevada,M,Olive,Fall,2.8,No,Standard,Yes,Yes,31,Venmo,Bi-Weekly,2025-12-02 16:50:09
+1277,51,Male,Jacket,Outerwear,51,Wyoming,M,Silver,Winter,2.9,No,Standard,Yes,Yes,33,Debit Card,Weekly,2025-12-02 16:50:09
+876,37,Male,Sandals,Footwear,39,North Dakota,L,Gray,Summer,4.1,Yes,Free Shipping,Yes,Yes,7,Bank Transfer,Every 3 Months,2025-12-02 16:50:09
+419,18,Male,Sweater,Clothing,73,Illinois,L,Purple,Spring,3.0,Yes,Standard,Yes,Yes,27,Venmo,Bi-Weekly,2025-12-02 16:50:09
+878,64,Male,Handbag,Accessories,65,Nebraska,M,Orange,Winter,4.9,Yes,Next Day Air,Yes,Yes,45,Venmo,Every 3 Months,2025-12-02 16:50:09
+813,64,Male,Boots,Footwear,56,Alaska,M,Olive,Summer,3.2,Yes,Standard,Yes,Yes,32,Credit Card,Weekly,2025-12-02 16:50:09
+976,58,Male,Sweater,Clothing,40,Washington,M,Olive,Summer,3.8,Yes,2-Day Shipping,Yes,Yes,2,Bank Transfer,Weekly,2025-12-02 16:50:09
+3510,50,Female,Dress,Clothing,31,Ohio,M,Peach,Fall,3.5,No,Store Pickup,No,No,17,PayPal,Bi-Weekly,2025-12-02 16:50:09
+3023,58,Female,Sandals,Footwear,26,Georgia,M,Lavender,Fall,4.0,No,Free Shipping,No,No,23,PayPal,Weekly,2025-12-02 16:50:09
+1162,63,Male,Shoes,Footwear,35,Oklahoma,M,Olive,Spring,3.4,No,Next Day Air,No,Yes,19,Debit Card,Monthly,2025-12-02 16:50:09
+2180,49,Male,Socks,Clothing,47,Delaware,L,Cyan,Spring,4.9,No,Free Shipping,Yes,Yes,12,Debit Card,Monthly,2025-12-02 16:50:09
+1280,63,Male,Dress,Clothing,34,Maryland,M,Brown,Fall,3.7,No,Next Day Air,Yes,No,29,Debit Card,Annually,2025-12-02 16:50:09
+1062,36,Male,Boots,Footwear,60,Idaho,L,Pink,Winter,3.5,No,Store Pickup,Yes,No,2,Cash,Every 3 Months,2025-12-02 16:50:09
+3767,62,Female,Pants,Clothing,29,Texas,XL,Teal,Summer,2.8,No,Store Pickup,No,Yes,33,PayPal,Annually,2025-12-02 16:50:09
+1668,51,Male,Handbag,Accessories,40,Oklahoma,L,Brown,Winter,3.4,No,2-Day Shipping,Yes,Yes,24,Bank Transfer,Every 3 Months,2025-12-02 16:50:09
+1380,21,Male,Skirt,Clothing,91,Minnesota,M,Yellow,Spring,4.3,No,Express,No,Yes,17,Cash,Bi-Weekly,2025-12-02 16:50:09
+3513,36,Female,Sweater,Clothing,64,Kentucky,M,Blue,Fall,4.5,No,Next Day Air,Yes,No,46,Debit Card,Quarterly,2025-12-02 16:50:09
+609,41,Male,Blouse,Clothing,73,Delaware,M,Brown,Summer,3.8,Yes,Standard,Yes,No,42,Debit Card,Every 3 Months,2025-12-02 16:50:09
+3357,39,Female,Jeans,Clothing,95,Tennessee,M,Beige,Spring,3.9,No,Express,No,Yes,10,Credit Card,Bi-Weekly,2025-12-02 16:50:09
+358,18,Male,Scarf,Accessories,31,Arkansas,L,Olive,Spring,4.9,Yes,Store Pickup,No,No,44,Venmo,Bi-Weekly,2025-12-02 16:50:09
+143,37,Male,Jacket,Outerwear,58,Nebraska,L,Violet,Fall,3.1,Yes,Free Shipping,Yes,Yes,33,Credit Card,Fortnightly,2025-12-02 16:50:09
+1542,24,Male,Blouse,Clothing,89,Illinois,L,Beige,Summer,4.7,No,Store Pickup,No,Yes,36,PayPal,Bi-Weekly,2025-12-02 16:50:09
+2558,70,Male,Skirt,Clothing,30,Oklahoma,M,Lavender,Winter,2.6,No,Next Day Air,No,No,35,Credit Card,Fortnightly,2025-12-02 16:50:09
+845,59,Male,Scarf,Accessories,32,Missouri,M,Green,Spring,4.3,Yes,Standard,Yes,No,5,Venmo,Bi-Weekly,2025-12-02 16:50:09
+3166,49,Female,Skirt,Clothing,85,Hawaii,L,Teal,Fall,4.9,No,Store Pickup,No,Yes,7,Debit Card,Every 3 Months,2025-12-02 16:50:09
+359,48,Male,Hat,Accessories,51,Minnesota,M,Beige,Winter,4.0,Yes,Next Day Air,No,Yes,6,Debit Card,Every 3 Months,2025-12-02 16:50:09
+328,61,Male,Coat,Outerwear,42,Iowa,M,Teal,Summer,3.1,Yes,Free Shipping,Yes,Yes,36,PayPal,Weekly,2025-12-02 16:50:09
+1044,28,Male,Jewelry,Accessories,38,Hawaii,M,Beige,Winter,4.8,Yes,Express,Yes,Yes,5,Cash,Fortnightly,2025-12-02 16:50:09
+3528,25,Female,Backpack,Accessories,81,Washington,XL,Black,Summer,4.3,No,Express,No,Yes,5,Venmo,Weekly,2025-12-02 16:50:09
+2324,35,Male,Handbag,Accessories,93,Maryland,M,Orange,Spring,3.9,No,Store Pickup,No,Yes,39,Bank Transfer,Monthly,2025-12-02 16:50:09
+3436,68,Female,Hat,Accessories,66,Montana,M,Silver,Summer,3.5,No,Express,No,No,26,PayPal,Bi-Weekly,2025-12-02 16:50:09
+1459,35,Male,Sweater,Clothing,28,Missouri,M,Peach,Spring,2.9,No,2-Day Shipping,Yes,Yes,34,Venmo,Weekly,2025-12-02 16:50:09
+957,29,Male,Handbag,Accessories,21,Mississippi,M,Indigo,Winter,4.4,Yes,Express,Yes,Yes,23,Credit Card,Quarterly,2025-12-02 16:50:09
+2504,69,Male,Shorts,Clothing,49,Ohio,L,Peach,Fall,3.0,No,Standard,No,Yes,2,Venmo,Bi-Weekly,2025-12-02 16:50:09
+1405,36,Male,Jeans,Clothing,64,New Mexico,M,Beige,Spring,2.8,No,Next Day Air,No,Yes,29,Debit Card,Weekly,2025-12-02 16:50:09
+3494,48,Female,Shirt,Clothing,28,New Mexico,S,Orange,Winter,3.7,No,Free Shipping,Yes,Yes,30,Debit Card,Weekly,2025-12-02 16:50:09
+2601,21,Male,Jewelry,Accessories,65,New York,L,Turquoise,Fall,4.5,No,Store Pickup,Yes,No,24,Bank Transfer,Bi-Weekly,2025-12-02 16:50:09
+2200,39,Male,Scarf,Accessories,47,North Carolina,M,Maroon,Summer,4.9,No,Store Pickup,No,No,40,Debit Card,Monthly,2025-12-02 16:50:09
+3460,68,Female,Gloves,Accessories,63,Ohio,M,Charcoal,Fall,2.8,No,Standard,Yes,No,1,Venmo,Annually,2025-12-02 16:50:09
+2624,49,Male,Sandals,Footwear,22,Massachusetts,M,Beige,Fall,2.8,No,Express,No,Yes,48,Bank Transfer,Annually,2025-12-02 16:50:09
+3681,22,Female,Boots,Footwear,67,Iowa,M,Yellow,Spring,4.8,No,Next Day Air,No,Yes,25,Venmo,Quarterly,2025-12-02 16:50:09
