@@ -92,7 +92,7 @@ The project is modularized into five core stages:
 1.  Clone the repository.
 2.  Install dependencies:
     ```bash
-    pip install -r requirements.txt  # If provided, else install packages manually
+    pip install -r requirements.txt 
     ```
 
 ### Execution
