@@ -161,7 +161,7 @@ class RecommendationEngine:
         model = self.train_recommender(df_indexed)
         
         # Save Model
-        self.save_model(model)
+        # self.save_model(model)
         
         # Example of loading (optional usage check)
         # loaded_model = self.load_model()
