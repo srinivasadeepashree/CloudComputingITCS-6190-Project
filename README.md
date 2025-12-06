@@ -6,6 +6,8 @@
 
 The system is built entirely on **Apache Spark**, leveraging its structured APIs for batch processing, streaming, and scalable machine learning.
 
+**[Video Presentatiion](https://drive.google.com/file/d/1B7fXW1N1iATS7NLERx8HsAq_hdqNt6__/view?usp=sharing)**
+
 ### 🎯 Key Objectives
 
   * **Data Ingestion:** Robustly load and clean large customer transaction datasets.
