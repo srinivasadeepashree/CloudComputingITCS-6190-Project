@@ -35,7 +35,7 @@ You may run the entire pipeline using the automated script or manually run each 
 
 The project includes a master script `run.sh` that attempts to execute the pipeline end-to-end.
 
-> ⚠️ Note: Streaming and app modules are long-running processes and may block the script.
+> ⚠️ Note: Streaming and app modules are long-running processes.
 
 ```bash
 make
@@ -49,7 +49,7 @@ Run each component separately for clearer logs, debugging, and control.
 
 ---
 
-## **1. Data Ingestion & Engineering**
+### **1. Data Ingestion & Engineering**
 
 Cleans the raw CSV, applies schema validation, and saves Parquet files.
 
@@ -66,7 +66,7 @@ data/processed/shopping/
 
 ---
 
-## **2. Exploratory Data Analysis (EDA)**
+### **2. Exploratory Data Analysis (EDA)**
 
 Runs statistical summaries, distributions, and revenue analysis.
 
@@ -79,7 +79,7 @@ Distribution tables and summary statistics printed to console.
 
 ---
 
-## **3. Advanced SQL Analytics**
+### **3. Advanced SQL Analytics**
 
 Executes the complete set of 9 analytics queries (CTEs, window functions, MBA, segmentation).
 
@@ -99,13 +99,13 @@ Results for:
 
 ---
 
-## **4. Real-Time Streaming Simulation**
+### **4. Real-Time Streaming Simulation**
 
 This step requires **two terminals**: one to generate batches, one to consume them.
 
 ---
 
-### **Terminal 1 — Data Generator**
+#### **Terminal 1 — Data Generator**
 
 ```bash
 python3 src/streaming.py
@@ -113,7 +113,7 @@ python3 src/streaming.py
 
 ---
 
-### **Terminal 2 — Spark Streaming Pipeline**
+#### **Terminal 2 — Spark Streaming Pipeline**
 
 ```bash
 python3 src/streaming_pipeline.py
@@ -128,7 +128,7 @@ python3 src/streaming_pipeline.py
 
 ---
 
-## **5. Machine Learning Model Training**
+### **5. Machine Learning Model Training**
 
 This trains and persists all three ML models into the `model/` folder.
 
@@ -145,7 +145,7 @@ python3 src/recommendation.py
 
 ---
 
-## **6. Application Deployment**
+### **6. Application Deployment**
 
 Launch the interactive **Gradio** application.
 
@@ -159,7 +159,7 @@ python3 src/app.py
 http://127.0.0.1:7860
 ```
 
-### **Application Features**
+#### **Application Features**
 
 * **Tab 1:** Seasonal purchase prediction
 * **Tab 2:** Product recommender (ALS)
