@@ -38,8 +38,7 @@ The project includes a master script `run.sh` that attempts to execute the pipel
 > ⚠️ Note: Streaming and app modules are long-running processes and may block the script.
 
 ```bash
-chmod +x run.sh
-./run.sh
+make
 ```
 
 ---
