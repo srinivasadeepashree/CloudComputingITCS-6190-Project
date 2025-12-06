@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.OneHotEncoderModel","timestamp":1764973592058,"sparkVersion":"4.0.1","uid":"OneHotEncoder_abf3c678a020","paramMap":{"inputCol":"Subscription Status_idx","outputCol":"Subscription Status_vec"},"defaultParamMap":{"handleInvalid":"error","dropLast":true,"outputCol":"OneHotEncoder_abf3c678a020__output"}}

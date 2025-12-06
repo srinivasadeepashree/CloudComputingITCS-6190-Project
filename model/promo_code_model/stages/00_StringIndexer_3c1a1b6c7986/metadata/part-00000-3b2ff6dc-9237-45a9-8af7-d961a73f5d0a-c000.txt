@@ -1,1 +1,0 @@
-{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1764694699630,"sparkVersion":"4.0.1","uid":"StringIndexer_3c1a1b6c7986","paramMap":{"outputCol":"label","inputCol":"Promo Code Used"},"defaultParamMap":{"outputCol":"StringIndexer_3c1a1b6c7986__output","stringOrderType":"frequencyDesc","handleInvalid":"error"}}

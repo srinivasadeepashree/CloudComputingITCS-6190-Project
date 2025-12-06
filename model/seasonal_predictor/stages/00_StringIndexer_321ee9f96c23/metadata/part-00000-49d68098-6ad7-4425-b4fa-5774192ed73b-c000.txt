@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexerModel","timestamp":1764973588938,"sparkVersion":"4.0.1","uid":"StringIndexer_321ee9f96c23","paramMap":{"outputCol":"label","handleInvalid":"keep","inputCol":"Item Purchased"},"defaultParamMap":{"outputCol":"StringIndexer_321ee9f96c23__output","stringOrderType":"frequencyDesc","handleInvalid":"error"}}

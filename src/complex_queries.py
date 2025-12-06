@@ -98,11 +98,7 @@ class ShoppingTrendsAnalyzer:
         """)
         
         result.show(30, truncate=False)
-        
-        print("\n💡 Key Insights:")
-        print("   - Shows top 3 categories for each age demographic")
-        print("   - Helps identify generational shopping preferences")
-        print("   - Useful for age-targeted marketing campaigns\n")
+    
         
         return result
     
@@ -177,12 +173,7 @@ class ShoppingTrendsAnalyzer:
             ORDER BY `Subscription Status` DESC
         """)
         summary.show()
-        
-        print("\n💡 Key Insights:")
-        print("   - Compares purchase frequency between subscribers and non-subscribers")
-        print("   - Measures subscription program effectiveness")
-        print("   - Identifies if subscribers have higher lifetime value\n")
-        
+
         return result
     
     def query_3_discount_promo_correlation(self):
@@ -243,11 +234,6 @@ class ShoppingTrendsAnalyzer:
         """)
         
         result.show(truncate=False)
-        
-        print("\n💡 Key Insights:")
-        print("   - Shows how discounts and promo codes affect purchase amounts")
-        print("   - Compares promotional strategies (discount only, promo only, both, neither)")
-        print("   - Helps optimize pricing and promotion tactics\n")
         
         return result
     
@@ -314,11 +300,6 @@ class ShoppingTrendsAnalyzer:
         
         result.show(truncate=False)
         
-        print("\n💡 Key Insights:")
-        print("   - Identifies which payment methods correlate with higher spending")
-        print("   - Shows customer demographics by payment preference")
-        print("   - Useful for payment gateway partnerships and fee negotiations\n")
-        
         return result
     
     def query_5_seasonal_category_trends(self):
@@ -384,11 +365,6 @@ class ShoppingTrendsAnalyzer:
         """)
         
         result.show(20, truncate=False)
-        
-        print("\n💡 Key Insights:")
-        print("   - Shows top 3 categories per season")
-        print("   - Reveals seasonal demand patterns")
-        print("   - Critical for inventory and marketing planning\n")
         
         return result
     
@@ -467,11 +443,6 @@ class ShoppingTrendsAnalyzer:
         
         result.show(truncate=False)
         
-        print("\n💡 Key Insights:")
-        print("   - Segments customers by lifetime value, frequency, and loyalty")
-        print("   - Identifies VIP customers for special treatment")
-        print("   - Shows revenue concentration by segment\n")
-        
         return result
     
     def query_7_shipping_preferences_analysis(self):
@@ -532,11 +503,6 @@ class ShoppingTrendsAnalyzer:
         """)
         
         result.show(20, truncate=False)
-        
-        print("\n💡 Key Insights:")
-        print("   - Shows shipping preferences by product category")
-        print("   - Correlates shipping type with order value and satisfaction")
-        print("   - Helps negotiate shipping partnerships and set delivery options\n")
         
         return result
     
@@ -613,11 +579,6 @@ class ShoppingTrendsAnalyzer:
         """)
         
         result.show(20, truncate=False)
-        
-        print("\n💡 Key Insights:")
-        print("   - Ranks locations by revenue and customer base")
-        print("   - Shows demographic profiles by geography")
-        print("   - Identifies top-performing markets for expansion\n")
         
         return result
     
@@ -711,11 +672,6 @@ class ShoppingTrendsAnalyzer:
         
         result.show(20, truncate=False)
         
-        print("\n💡 Key Insights:")
-        print("   - Identifies product categories frequently bought together")
-        print("   - Lift score > 1 indicates positive correlation")
-        print("   - Use for product bundling, recommendations, and store layout\n")
-        
         return result
 
 
@@ -726,7 +682,7 @@ def main():
     print("""
     ╔════════════════════════════════════════════════════════════════╗
     ║      Shopping Trends - 9 Advanced Analytical Queries           ║
-    ║      ITCS 6190 Big Data Analytics Project                      ║
+    ║      ITCS 6190 Cloud Computing for Data Analysis Project       ║
     ╚════════════════════════════════════════════════════════════════╝
     """)
     
@@ -760,34 +716,34 @@ def main():
     print("\nEach query demonstrates advanced SQL techniques and provides")
     print("actionable business insights for decision-making.\n")
     
-    input("Press Enter to start Query 1...")
+    print("Query 1...")
     
     # Execute all queries
-    q1 = analyzer.query_1_top_categories_by_age_group()
-    input("\nPress Enter for Query 2...")
+    analyzer.query_1_top_categories_by_age_group()
+    print("\nQuery 2...")
     
-    q2 = analyzer.query_2_subscription_impact_on_frequency()
-    input("\nPress Enter for Query 3...")
+    analyzer.query_2_subscription_impact_on_frequency()
+    print("\nQuery 3...")
     
-    q3 = analyzer.query_3_discount_promo_correlation()
-    input("\nPress Enter for Query 4...")
+    analyzer.query_3_discount_promo_correlation()
+    print("\nQuery 4...")
     
-    q4 = analyzer.query_4_payment_method_analysis()
-    input("\nPress Enter for Query 5...")
+    analyzer.query_4_payment_method_analysis()
+    print("\nQuery 5...")
     
-    q5 = analyzer.query_5_seasonal_category_trends()
-    input("\nPress Enter for Query 6...")
+    analyzer.query_5_seasonal_category_trends()
+    print("\nQuery 6...")
     
-    q6 = analyzer.query_6_customer_lifetime_value_segmentation()
-    input("\nPress Enter for Query 7...")
+    analyzer.query_6_customer_lifetime_value_segmentation()
+    print("\nQuery 7...")
     
-    q7 = analyzer.query_7_shipping_preferences_analysis()
-    input("\nPress Enter for Query 8...")
+    analyzer.query_7_shipping_preferences_analysis()
+    print("\nQuery 8...")
     
-    q8 = analyzer.query_8_location_market_analysis()
-    input("\nPress Enter for Query 9...")
+    analyzer.query_8_location_market_analysis()
+    print("\nQuery 9...")
     
-    q9 = analyzer.query_9_product_affinity_basket_analysis()
+    analyzer.query_9_product_affinity_basket_analysis()
     
     # Summary
     print("\n" + "="*80)
@@ -827,7 +783,6 @@ def main():
     print("   - Lift and confidence calculations")
     
     print("\n" + "="*80)
-    print("Ready for demo and presentation! 🎉")
     print("="*80 + "\n")
     
     # spark.stop()

@@ -1,4 +1,3 @@
-# Streaming job placeholder
 """
 Streaming Data Simulator
 Converts static CSV into real-time stream
@@ -9,7 +8,9 @@ import random
 from datetime import datetime
 import pandas as pd
 import os
+import shutil
 
+folder_path = '/workspaces/CloudComputingITCS-6190-Project/data/streaming_input'
 
 class TransactionSimulator:
     """Simulates real-time shopping transactions"""
@@ -72,35 +73,12 @@ def main():
     print("""
     ╔════════════════════════════════════════════════════════════════╗
     ║            Shopping Trends - Streaming Simulator               ║
-    ║            ITCS 6190 Big Data Analytics                        ║
+    ║            ITCS 6190 Cloud Computing for Data Analysis Project ║
     ╚════════════════════════════════════════════════════════════════╝
     """)
-    
+    shutil.rmtree(folder_path)
     simulator = TransactionSimulator('data/shopping.csv')
-    
-    print("\nConfiguration:")
-    print("  1. Quick Demo (10 batches, 30 trans each, 2s delay) - 20 seconds")
-    print("  2. Standard (20 batches, 50 trans each, 2s delay) - 40 seconds")
-    print("  3. Extended (30 batches, 50 trans each, 3s delay) - 90 seconds")
-    print("  4. Custom")
-    
-    choice = input("\nSelect configuration (1-4): ")
-    
-    if choice == '1':
-        simulator.stream_to_directory(batch_size=30, num_batches=10, delay=2)
-    elif choice == '2':
-        simulator.stream_to_directory(batch_size=50, num_batches=20, delay=2)
-    elif choice == '3':
-        simulator.stream_to_directory(batch_size=50, num_batches=30, delay=3)
-    elif choice == '4':
-        batch_size = int(input("Batch size: "))
-        num_batches = int(input("Number of batches: "))
-        delay = int(input("Delay (seconds): "))
-        simulator.stream_to_directory(batch_size=batch_size, num_batches=num_batches, delay=delay)
-    else:
-        print("Invalid choice, using standard configuration")
-        simulator.stream_to_directory()
-
+    simulator.stream_to_directory(batch_size=50, num_batches=20, delay=2)
 
 if __name__ == "__main__":
     main()
