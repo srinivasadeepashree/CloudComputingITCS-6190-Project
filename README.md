@@ -130,6 +130,6 @@ Alternatively, follow the detailed **[Reproduction Guide](https://github.com/sri
 
 ## 👤 Authors
 
-**Srinivasa Deepashree, Vasudha Maganti, Sasi Vadana Atluri, Sai Tarun Vedagiri, Manish Yendeti**
+**Srinivasa Deepashree**
 
 *ITCS 6190 - Cloud Computing for Data Analysis Project*
