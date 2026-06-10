@@ -1,3 +1,4 @@
+import utils.session
 import gradio as gr
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, lit, explode, collect_set

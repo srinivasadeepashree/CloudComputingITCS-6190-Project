@@ -135,7 +135,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .envrc
 .venv
 env/
@@ -208,3 +207,5 @@ __marimo__/
 
 # Ignore the large, full dataset file
 data/shopping_trends.csv
+config.bat
+node_modules
